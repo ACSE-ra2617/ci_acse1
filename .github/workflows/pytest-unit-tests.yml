@@ -12,8 +12,35 @@ on:
 
 jobs:
   pytest:
-    name: unit testing
-    runs-on: ubuntu-latest
+    name: ${{ matrix.name }}
+    runs-on: "${{ matrix.os }}"
+
+    env:
+      PYTHON_VERSION: "${{ matrix.python-version }}"
+      TESTS: "tests/"
+
+    strategy:
+      # Prevent all build to stop if a single one fails
+      fail-fast: false
+
+      matrix:
+        name: [
+           python36-ubuntu1804,
+           python38-ubuntu2004,
+           python37-macOS
+        ]
+        include:
+        - name: python36-ubuntu1804
+          python-version: 3.6
+          os: ubuntu-18.04
+
+        - name: python38-ubuntu2004
+          python-version: 3.8
+          os: ubuntu-20.04
+
+        - name: python37-macOs
+          python-version: 3.7
+          os: macos-latest
 
     steps:
     - name: Checkout simple_functions
