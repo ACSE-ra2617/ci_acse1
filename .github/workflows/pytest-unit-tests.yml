@@ -51,7 +51,7 @@ jobs:
         echo "::set-env name=TESTS::tests/"
 
     - name: Install dependencies
-      if: ${{ matrix.os }} != 'python37-macOS'
+      if: ${{ matrix.os }} != 'macOS'
       run: |
         sudo apt-get install python3-setuptools -y
         pip3 install --upgrade pip
@@ -59,15 +59,14 @@ jobs:
         pip3 install -r requirements.txt
 
     - name: Install dependencies Mac
-      if: ${{ matrix.os }} == 'python37-macOS'
+      if: ${{ matrix.os }} == 'macOS'
       run: |
         sdk install python3-setuptools -y
         pip3 install --upgrade pip
         pip3 install -e .
         pip3 install -r requirements.txt
 
-    
-
+  
     - name: Set a run prefix
       run : |
         echo "::set-env name=RUN::python3 -m"
