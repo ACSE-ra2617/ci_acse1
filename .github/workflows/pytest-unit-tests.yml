@@ -59,7 +59,7 @@ jobs:
         pip3 install -r requirements.txt
 
     #- name: Install dependencies Mac
-    #  if: ${{ matrix.os }} == 'macOS'
+    #  if: ${{ matrix.os }} == 'python37-macOs'
     #  run: |
     #    sdk install python3-setuptools -y
     #    pip3 install --upgrade pip
