@@ -52,7 +52,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-	if: ${{ matrix.os }} != 'macOS'
+	if ${{ matrix.os }} != 'macOS'; then
         	sudo apt-get install python3-setuptools -y
         pip3 install --upgrade pip
         pip3 install -e .
