@@ -33,6 +33,9 @@ jobs:
         - name: python36-ubuntu1804
           python-version: 3.6
           os: ubuntu-18.04
+	  TARGET: x86_64-apple-darwin
+          COMPILER: clang
+          LINKER: clang
 
         - name: python38-ubuntu2004
           python-version: 3.8
