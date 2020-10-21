@@ -52,7 +52,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-
+	if [ "$RUNNER_OS" != "macOS" ]; then
+              sudo apt-get install python3-setuptools -y
         pip3 install --upgrade pip
         pip3 install -e .
         pip3 install -r requirements.txt
