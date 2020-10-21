@@ -50,16 +50,16 @@ jobs:
       run : |
         echo "::set-env name=TESTS::tests/"
 
-    - if: ${{ matrix.os }} != 'macOS'
-      name: Install dependencies
+    - name: Install dependencies
+      if: ${{ matrix.os }} != 'macOS'
       run: |
         sudo apt-get install python3-setuptools -y
         pip3 install --upgrade pip
         pip3 install -e .
         pip3 install -r requirements.txt
 
-    - if: ${{ matrix.os }} == 'macOS'
-      name: Install dependencies
+    - name: Install dependencies Mac
+      if: ${{ matrix.os }} == 'macOS'
       run: |
         sdk install python3-setuptools -y
         pip3 install --upgrade pip
