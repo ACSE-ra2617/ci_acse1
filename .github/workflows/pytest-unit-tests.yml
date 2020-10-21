@@ -50,10 +50,10 @@ jobs:
       run : |
         echo "::set-env name=TESTS::tests/"
 
-    - name: Install dependencies
+    - if: ${{ matrix.os }} != 'macOS'
+      name: Install dependencies
       run: |
-	if ${{ matrix.os }} != 'macOS'; then
-        	sudo apt-get install python3-setuptools -y
+        sudo apt-get install python3-setuptools -y
         pip3 install --upgrade pip
         pip3 install -e .
         pip3 install -r requirements.txt
